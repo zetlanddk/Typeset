@@ -2,8 +2,8 @@
 // specified https://github.com/richtr/guessLanguage.js
 
 var Hypher = require('hypher'),
-  english = require('./hypher-patterns/en-us'),
-  h = new Hypher(english);
+  danish = require('./hypher-patterns/da'),
+  h = new Hypher(danish);
 
 module.exports = function(text){
 

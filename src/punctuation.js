@@ -2,7 +2,7 @@ module.exports = function(text){
 
   // Dashes
   text = text.replace(/--/g, '–');
-  text = text.replace(/ – /g,'&thinsp;&mdash;&thinsp;');
+  text = text.replace(/ – /g,'&thinsp;&ndash;&thinsp;');
 
   // Elipses
   text = text.replace(/\.\.\./g,'…');
