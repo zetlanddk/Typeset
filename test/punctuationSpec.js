@@ -30,9 +30,9 @@ describe('Punctuation', function() {
     expect(punc(html)).to.equal('<p>Pues aquí hay algo que no te va a gustar Laura, –dijo Carlos– yo también voy al equipo de Juan.</p>');
   });
 
-  it('should replace a dash between spaces ( – ) by (&thinsp;&mdash;&thinsp;)', function() {
+  it('should replace a dash between spaces ( – ) by (&thinsp;&ndash;&thinsp;)', function() {
     var html = '<p>Use an "en" dash to con­nect num­bers in a range. It means "up to and includ­ing" when used like this: "During the years 1998 – 1999," and "peo­ple aged 55 – 63."</p>';
-    expect(punc(html)).to.equal('<p>Use an "en" dash to con­nect num­bers in a range. It means "up to and includ­ing" when used like this: "During the years 1998&thinsp;&mdash;&thinsp;1999," and "peo­ple aged 55&thinsp;&mdash;&thinsp;63."</p>');
+    expect(punc(html)).to.equal('<p>Use an "en" dash to con­nect num­bers in a range. It means "up to and includ­ing" when used like this: "During the years 1998&thinsp;&ndash;&thinsp;1999," and "peo­ple aged 55&thinsp;&ndash;&thinsp;63."</p>');
   });
 
 });

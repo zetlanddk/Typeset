@@ -20,7 +20,12 @@ function isAcronym (word) {
 
 function removeCruft (word) {
 
-  var ignore = "{}()-‘’[]!#$*&;:,.“”″′‘’\"'".split('').concat(['&quot;', "'s", "’s", '&#39;s']);
+  var ignore = "{}()-‘’[]!#$*&;:,.“”″′‘’\"'".split('').concat(['&quot;']);
+
+  var endings = ['s', 'er', 'erne', 'eres', 'ers'];
+  for (var i in endings)
+    ignore = ignore.concat(["'"+endings[i], "’"+endings[i], '&#39;'+endings[i]]);
+
   var encodedIgnore = ignore.slice(0);
 
   for (var x in encodedIgnore)
