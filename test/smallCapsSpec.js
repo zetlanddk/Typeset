@@ -13,6 +13,11 @@ describe('SmallCaps', function() {
     expect(smallCaps(html)).to.equal('<p><span class="small-caps">NATO</span></p>');
   });
 
+  it('knows ([NATO})', function() {
+    var html = '<p>([NATO])</p>';
+    expect(smallCaps(html)).to.equal('<p>([<span class="small-caps">NATO</span>])</p>');
+  });
+
   it("knows EU's", function() {
     var html = "<p>EU's</p>";
     expect(smallCaps(html)).to.equal('<p><span class="small-caps">EU</span>\'s</p>');
@@ -26,6 +31,11 @@ describe('SmallCaps', function() {
   it("knows EU'er", function() {
     var html = "<p>EU'er</p>";
     expect(smallCaps(html)).to.equal('<p><span class="small-caps">EU</span>\'er</p>');
+  });
+
+  it("knows EU-politik", function() {
+    var html = "<p>EU-politik</p>";
+    expect(smallCaps(html)).to.equal('<p><span class="small-caps">EU</span>-politik</p>');
   });
 
 });

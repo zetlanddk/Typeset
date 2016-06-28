@@ -20,21 +20,49 @@ function isAcronym (word) {
 
 function removeCruft (word) {
 
+  var wordSplitters = "-‘’′‘’'".split('').concat(['&#39;']);
   var ignore = "{}()-‘’[]!#$*&;:,.“”″′‘’\"'".split('').concat(['&quot;']);
 
-  var endings = ['s', 'er', 'erne', 'eres', 'ers'];
-  for (var i in endings)
-    ignore = ignore.concat(["'"+endings[i], "’"+endings[i], '&#39;'+endings[i]]);
-
   var encodedIgnore = ignore.slice(0);
+  var encodedWordSplitters = wordSplitters.slice(0);
 
   for (var x in encodedIgnore)
     encodedIgnore[x] = entities.encode(encodedIgnore[x]);
 
+  for (var x in encodedWordSplitters)
+    encodedWordSplitters[x] = entities.encode(encodedWordSplitters[x]);
+
   ignore = ignore.concat(encodedIgnore);
+  wordSplitters = wordSplitters.concat(encodedWordSplitters);
 
   var trailing = '',
   leading = '';
+
+  for (var i = 0; i < wordSplitters.length; i++) {
+
+    var ignoreThis = wordSplitters[i],
+    endOfWord = (word.match(ignoreThis+'.*$') || [])[0];
+
+    if (endOfWord) {
+      trailing = endOfWord + trailing;
+      word = word.slice(0, -endOfWord.length);
+      i = 0;continue;
+    }
+
+  }
+
+  for (var j = 0; j < wordSplitters.length; j++) {
+
+    var ignoreThis = wordSplitters[j],
+      startOfWord = (word.match('^.*'+ignoreThis) || [])[0];
+
+    if (startOfWord) {
+      leading += startOfWord;
+      word = word.slice(startOfWord.length);
+      j = 0;continue;
+    }
+
+  }
 
   for (var i = 0; i < ignore.length; i++) {
 
