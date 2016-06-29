@@ -1,5 +1,6 @@
 var modules = {
   quotes: require('./quotes'),
+  hyphenate: require('./hyphenate'),
   ligatures: require('./ligatures'),
   smallCaps: require('./smallCaps'),
   punctuation: require('./punctuation'),

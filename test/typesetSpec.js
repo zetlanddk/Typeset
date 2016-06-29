@@ -13,7 +13,7 @@ describe('Typeset', function() {
     '</blockquote>' +
     '<p>Foo&#39;s <em>&quot;bar&#39;s&quot;</em> ABC.</p>';
 
-    expect(typeset(html)).to.equal('<p>Foo’s<span class="push-double"></span> <span class="pull-double">“</span><em>bar</em><span class="push-double"></span><span class="pull-double">”</span> <span class="small-caps">ABC</span><span class="push-single"></span><span class="pull-single">’</span>s.</p><blockquote><p>It’s not a <span class="small-caps">PC</span> replacement.</p><p>-Lukas Mathis,<span class="push-double"></span> <span class="pull-double">“</span><a href="/">iPad: A Consumption Device, After All?</a><span class="push-double"></span><span class="pull-double">”</span>, <em>ignore</em> the code.</p></blockquote><p>Foo’s <em><span class="push-double"></span><span class="pull-double">“</span>bar’s”</em> <span class="small-caps">ABC</span>.</p>');
+    expect(typeset(html)).to.equal('<p>Foo’s<span class="push-double"></span> <span class="pull-double">“</span><em>bar</em><span class="push-double"></span><span class="pull-double">”</span> <span class="small-caps">ABC</span><span class="push-single"></span><span class="pull-single">’</span>s.</p><blockquote><p>It’s not a <span class="small-caps">PC</span> repla­ce­ment.</p><p>-Lukas Mathis,<span class="push-double"></span> <span class="pull-double">“</span><a href="/">iPad: A Consumption Device, After All?</a><span class="push-double"></span><span class="pull-double">”</span>, <em>ignore</em> the code.</p></blockquote><p>Foo’s <em><span class="push-double"></span><span class="pull-double">“</span>bar’s”</em> <span class="small-caps">ABC</span>.</p>');
   });
 
   it('should process a complex text', function() {
