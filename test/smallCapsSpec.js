@@ -38,4 +38,9 @@ describe('SmallCaps', function() {
     expect(smallCaps(html)).to.equal('<p><span class="small-caps">EU</span>-politik</p>');
   });
 
+  it("knows NATO-bandit", function() {
+    var html = "<p>NATO-bandit</p>";
+    expect(smallCaps(html)).to.equal('<p><span class="small-caps">NATO</span>-bandit</p>');
+  });
+
 });
