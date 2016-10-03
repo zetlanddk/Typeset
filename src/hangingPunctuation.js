@@ -27,8 +27,6 @@ var alignMe = "CcOoYTAVvWw".split('');
 
 module.exports = function(text, node, $){
 
-  if (text.length < 2) return text;
-
   // Remove consecutive double spaces then create
   // array of distinct words.
   var words = text.split(' ').join(' ').split(' ');

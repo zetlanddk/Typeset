@@ -1,7 +1,7 @@
 var typeset = require('../src');
 
 function hang (html) {
-  return typeset(html, {enable: ['hangingPunctuation']})
+  return typeset(html, {enable: ['hangingPunctuation', 'smallCaps']})
 };
 
 var expect = require('chai').expect;
@@ -23,6 +23,11 @@ describe('Hanging Punctuation', function() {
     expect(hang(html)).to.equal('<p><span class="pull-double">"</span>Hello, Mr Fox."</p>');
   });
 
+  it('should hang punctuation at start with small caps', function() {
+    var html = '<p>"HELLO, Mr Fox."</p>';
+    expect(hang(html)).to.equal('<p><span class="pull-double">"</span><span class="small-caps">HELLO</span>, Mr Fox."</p>');
+  });
+
   it('should add a spacer when wrapping a node containing a text node', function(){
     var html = '<p>X "<em>O</em>" X</p>';
     expect(hang(html)).to.equal('<p>X<span class="push-double"></span> <span class="pull-double">"</span><em>O</em><span class="push-double"></span><span class="pull-double">"</span> X</p>');
@@ -33,15 +38,20 @@ describe('Hanging Punctuation', function() {
     expect(hang(html)).to.equal('<p><span class="pull-single">\'</span>Hello, Mr Fox.\'</p>');
   });
 
+  it('should hang single punction at start with smallcaps', function() {
+    var html = '<p>\'HELLO, Mr Fox.\'</p>';
+    expect(hang(html)).to.equal('<p><span class="pull-single">\'</span><span class="small-caps">HELLO</span>, Mr Fox.\'</p>');
+  });
+
   it('should add a spacer when inside a node next to a text node', function(){
     var html = '<p>X <em>"O"</em> X</p>';
     expect(hang(html)).to.equal('<p>X <em><span class="push-double"></span><span class="pull-double">"</span>O"</em> X</p>');
   });
 
   it('should hang punctuation with two p', function(){
-    var html = '<p>ABC</p>\n' +
+    var html = '<p>Abc</p>\n' +
                '<p>"Hello Fox."</p>';
-    expect(hang(html)).to.equal('<p>ABC</p>\n'+
+    expect(hang(html)).to.equal('<p>Abc</p>\n'+
                                 '<p><span class="pull-double">"</span>Hello Fox."</p>');
   });
 

@@ -40,10 +40,10 @@ function removeCruft (word) {
 
   for (var i = 0; i < wordSplitters.length; i++) {
 
-    var ignoreThis = wordSplitters[i],
-    endOfWord = (word.match(ignoreThis+'.*$') || [])[0];
+    var ignoreThis = wordSplitters[i];
+    var endOfWord = (word.match(ignoreThis+'.*$') || [])[0];
 
-    if (endOfWord) {
+    if (endOfWord && endOfWord != word) {
       trailing = endOfWord + trailing;
       word = word.slice(0, -endOfWord.length);
       i = 0;continue;
@@ -53,8 +53,8 @@ function removeCruft (word) {
 
   for (var j = 0; j < wordSplitters.length; j++) {
 
-    var ignoreThis = wordSplitters[j],
-      startOfWord = (word.match('^.*'+ignoreThis) || [])[0];
+    var ignoreThis = wordSplitters[j];
+    var startOfWord = (word.match('^.*'+ignoreThis) || [])[0];
 
     if (startOfWord) {
       leading += startOfWord;
