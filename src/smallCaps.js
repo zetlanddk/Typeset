@@ -99,13 +99,17 @@ module.exports = function(text){
 
   for (var i in wordList) {
 
-    var brokenWord = removeCruft(wordList[i]),
-    word = brokenWord[1],
-    leading = brokenWord[0],
-    trailing = brokenWord[2];
+    if ( typeof wordList[i] === 'string' ) {
 
-    if (isAcronym(word)) {
-      wordList[i] = leading + '<span class="small-caps">' + word + '</span>' + trailing;
+      var brokenWord = removeCruft(wordList[i]),
+        word = brokenWord[1],
+        leading = brokenWord[0],
+        trailing = brokenWord[2];
+
+      if (isAcronym(word)) {
+        wordList[i] = leading + '<span class="small-caps">' + word + '</span>' + trailing;
+      }
+
     }
   }
 
