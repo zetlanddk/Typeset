@@ -54,7 +54,6 @@ var typeset =
 
 	var modules = {
 	  quotes: __webpack_require__(1),
-	  // hyphenate: require('./hyphenate'),
 	  ligatures: __webpack_require__(2),
 	  smallCaps: __webpack_require__(3),
 	  punctuation: __webpack_require__(8),
@@ -261,13 +260,17 @@ var typeset =
 	
 	  for (var i in wordList) {
 	
-	    var brokenWord = removeCruft(wordList[i]),
-	    word = brokenWord[1],
-	    leading = brokenWord[0],
-	    trailing = brokenWord[2];
+	    if ( typeof wordList[i] === 'string' ) {
 	
-	    if (isAcronym(word)) {
-	      wordList[i] = leading + '<span class="small-caps">' + word + '</span>' + trailing;
+	      var brokenWord = removeCruft(wordList[i]),
+	        word = brokenWord[1],
+	        leading = brokenWord[0],
+	        trailing = brokenWord[2];
+	
+	      if (isAcronym(word)) {
+	        wordList[i] = leading + '<span class="small-caps">' + word + '</span>' + trailing;
+	      }
+	
 	    }
 	  }
 	
